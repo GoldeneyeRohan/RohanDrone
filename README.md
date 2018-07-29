@@ -4,7 +4,7 @@ Central page for all of my drone related stuff. This project documents my attemp
 All CAD files can be found in [this](/CADs) directory, including an assembly with all the parts. The frame is intended to be CNC-ed, and an Adobe Illustrator vector file is included so you can easily go and laser-cut or water-jet the frame from a piece of plywood or metal.
 
 ## Bill of Materials
-A sparse bill of materials is included [here](/BOM). I had some parts lying around that I just used, and so I didn't include them in my Bill of Materials. You will still need to buy a: LiPo-battery with a charger, a 5-volt regulator, and some cables to make a wiring harness from to connect everything together. You could buy a ton of connector cables and adaptors, but I prefer to just solder everything together myself. 
+A sparse bill of materials is included [here](/Parts). I had some parts lying around that I just used, and so I didn't include them in my Bill of Materials. You will still need to buy a: LiPo-battery with a charger, a 5-volt regulator, and some cables to make a wiring harness from to connect everything together. You could buy a ton of connector cables and adaptors, but I prefer to just solder everything together myself. 
 
 |Part|Approx Price|
 |---|---|
