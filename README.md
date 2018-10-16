@@ -17,8 +17,10 @@ A sparse bill of materials is included [here](/Parts). I had some parts lying ar
 |*Total*|$200|
 
 ## Code Setup
+### Raspberry Pi OS and ROS
 You will need to install an operating system on the Raspberry Pi and subsequently install ROS on it. You can install ROS on Raspbian, the OS created by Raspberry pi, but the setup is a bit of a pain in the ass. I have found it easier to install Ubuntu Xenial image with ROS pre-installed on it. You can find instructions for that [here](https://downloads.ubiquityrobotics.com/pi.html). 
 
+### ROS Workspace and Nodes
 To use my nodes, you will need to clone my [workspace](https://github.com/GoldeneyeRohan/RDRONE). If you are not familiar with ROS (or git), here is how to do this:
 
 `cd /directory-where-you-want-your-workspace`
@@ -42,5 +44,29 @@ Then source the workspace either by running this (one time use):
 `source devel/setup.bash`
 OR (always load it into shell): 
 `echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc`
+
+### Arduino Nano Sketches
+I have written several test nodes to test your nano, setup the motors, test the imu, etc. Moreover, the Arduino Nano is in charge of all low level control of the drone. You need to install my scripts. First install the Arduino IDE for ubuntu: 
+
+`sudo apt-get install arduino`
+
+Then install the rosserial package and the ros_lib by going [here](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup) and following the required steps. I use ROS Kinetic, so please follow those instructions. 
+
+After this, install the Adafruit libraries for the BNO055 IMU, instructions can be found [here](https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor/arduino-code).
+
+Then get my sketches by downloading this [repo](https://github.com/GoldeneyeRohan/RDRONE_NANO) and put them in your sketchbook directory. Now you can compile and upload my code to your arduino. A usefull command to figure out what USB port your nano is connected to is: 
+
+`ls -l /dev | grep ttyUSB`
+
+To instantiate your Arduino as a node, run the command: 
+
+`rosrun rosserial_python serial_node.py /dev/ttyUSB*` 
+
+Where `*` should be changed to the usb port the nano is listening on. Don't forget to start the ros master first with `roscore`
+
+## Hardware Setup
+### IMU: 
+Follow this [guide](https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor/pinouts). The Arduino Nano has the exact same hardware specs as the UNO (ATMega 328), so the pinout is the same. Take advantage of the shield's VGS connectors. 
+
 
 
